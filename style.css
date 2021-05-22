@@ -1,0 +1,40 @@
+.hero{
+    width: 22px;
+    height: 22px;
+    background: green;
+    border: 1px solid black;
+    position: absolute;
+    box-sizing: border-box;
+    top:0;
+    left:0;
+    z-index: 1000;
+   
+}
+
+
+
+
+.food{
+    width: 10px;
+    height: 10px;
+    background: red;
+    border: 1px solid black;
+    position: absolute;
+    box-sizing: border-box;
+    top:0;
+    left:0;
+    z-index: 50;
+}
+.game-title{
+    text-align: center;
+}
+.map{
+    width: 500px;
+    height: 500px;
+    background: lightcyan;
+    position: relative;
+    margin: 0 auto;
+    border: 1px solid black;
+    box-sizing: border-box;
+    z-index: 10;
+}
