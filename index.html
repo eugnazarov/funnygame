@@ -4,122 +4,20 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="cache-control" content="no-cache" />
     <link rel="stylesheet" href="style.css" />
     <title>Funny Game</title>
   </head>
   <body>
-    <h1 class="game-title">Funny JavaScript Game</h1>
-    <h2 id="score" class="score">Your score: 0</h2>
+    <h1 class="game-title">Вадим и Бананы</h1>
+    <button id="start" onClick="startGame()">Начать</button>
+    <h2 id="score" class="score">Ваш счет: 0</h2>
     <div id="map" class="map">
-      <div id="hero" style="top: 0; left: 0" class="hero"></div>
+      <div id="hero" class="hero"></div>
     </div>
 
     <p>Controls: WASD</p>
 
-    <script>
-      console.log("Hello!");
-      const inputs = {
-        up: "w",
-        down: "s",
-        left: "a",
-        right: "d",
-      };
-
-      let border = 500;
-      let currentVer = 0;
-      let currentHor = 0;
-      let score = 0;
-
-      function random(min, max) {
-        return Math.round(Math.random() * (max - min) + min);
-      }
-
-      const spawnFood = () => {
-        let points = [];
-
-        for (let x = 0; x < border; x += 25) {
-          for (let y = 0; y < border; y += 25) {
-            let point = {
-              x: x,
-              y: y,
-            };
-            let hero = document.getElementById("hero");
-            if (
-              hero.style.top + 0 !== point.y &&
-              hero.style.left + 0 !== point.x
-            ) {
-              points.push(point);
-            }
-          }
-        }
-
-        let rand = random(0, points.length);
-        console.log(rand);
-        let food = points[rand];
-        let map = document.getElementById("map");
-        map.innerHTML += "<div id=food class=food></div>";
-        let foodPoint = document.getElementById("food");
-        foodPoint.style.top = `${food.y}px`;
-        foodPoint.style.left = `${food.x}px`;
-      };
-
-      const eatFood = () => {
-        let food = document.getElementById("food");
-        food.remove();
-        score++;
-        let scoreText = document.getElementById("score");
-        scoreText.innerText = `Your score: ${score}`;
-      };
-
-      spawnFood();
-
-      const move = (event) => {
-        console.log("move");
-        let hero = document.getElementById("hero");
-
-        switch (event.key) {
-          case inputs.down: {
-            if (currentVer + 25 < border) {
-              currentVer += 25;
-            }
-
-            break;
-          }
-          case inputs.up: {
-            if (currentVer - 25 >= 0) {
-              currentVer -= 25;
-            }
-            break;
-          }
-          case inputs.right: {
-            if (currentHor + 25 < border) {
-              currentHor += 25;
-            }
-            break;
-          }
-          case inputs.left: {
-            if (currentHor - 25 >= 0) {
-              currentHor -= 25;
-            }
-            break;
-          }
-        }
-        let top = currentVer;
-        let left = currentHor;
-
-        hero.style.top = `${top}px`;
-        hero.style.left = `${left}px`;
-
-        let food = document.getElementById("food");
-        if (
-          food.style.left === hero.style.left &&
-          food.style.top === hero.style.top
-        ) {
-          eatFood();
-          spawnFood();
-        }
-      };
-      document.addEventListener("keydown", move);
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>

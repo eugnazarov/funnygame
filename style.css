@@ -1,12 +1,13 @@
 .hero{
-    width: 23px;
-    height: 23px;
+    width: 66px;
+    height: 86px;
     background: green;
-    border: 1px solid black;
+
     position: absolute;
     box-sizing: border-box;
-    
-    z-index: 1000;
+    background-image: url(./vadim.jpg);
+    background-size: cover;
+    z-index: 100;
    
 }
 
@@ -14,22 +15,23 @@
 
 
 .food{
-    width: 10px;
-    height: 10px;
-    background: red;
-    border: 1px solid black;
+    width: 46px;
+    height: 46px;
+
     position: absolute;
     box-sizing: border-box;
     top:0;
     left:0;
     z-index: 50;
+    background-image: url(./banana.svg);
+    background-size: cover;
 }
 .game-title{
     text-align: center;
 }
 .map{
-    width: 500px;
-    height: 500px;
+    width: 700px;
+    height: 700px;
     background: lightcyan;
     position: relative;
     margin: 0 auto;
