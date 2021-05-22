@@ -1,12 +1,11 @@
 .hero{
-    width: 22px;
-    height: 22px;
+    width: 23px;
+    height: 23px;
     background: green;
     border: 1px solid black;
     position: absolute;
     box-sizing: border-box;
-    top:0;
-    left:0;
+    
     z-index: 1000;
    
 }

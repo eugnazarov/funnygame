@@ -11,10 +11,13 @@
     <h1 class="game-title">Funny JavaScript Game</h1>
     <h2 id="score" class="score">Your score: 0</h2>
     <div id="map" class="map">
-      <div id="hero" class="hero"></div>
+      <div id="hero" style="top: 0; left: 0" class="hero"></div>
     </div>
 
+    <p>Controls: WASD</p>
+
     <script>
+      console.log("Hello!");
       const inputs = {
         up: "w",
         down: "s",
@@ -71,6 +74,7 @@
       spawnFood();
 
       const move = (event) => {
+        console.log("move");
         let hero = document.getElementById("hero");
 
         switch (event.key) {
