@@ -1,23 +1,17 @@
 .hero{
-    width: 66px;
-    height: 86px;
+    width: 23px;
+    height: 23px;
     background: green;
-
     position: absolute;
     box-sizing: border-box;
-    background-image: url(./vadim.jpg);
+  
     background-size: cover;
-    z-index: 100;
-   
+    z-index: 100;  
 }
-
-
-
 
 .food{
     width: 46px;
     height: 46px;
-
     position: absolute;
     box-sizing: border-box;
     top:0;
@@ -30,7 +24,7 @@
     text-align: center;
 }
 .map{
-    width: 700px;
+    width: 1000px;
     height: 700px;
     background: lightcyan;
     position: relative;

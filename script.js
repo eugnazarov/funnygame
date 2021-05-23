@@ -1,3 +1,4 @@
+"use strict";
 
 const inputs = {
   up: "w",
@@ -5,10 +6,8 @@ const inputs = {
   left: "a",
   right: "d",
 };
-
-let border = 600;
-let currentVer = 0;
-let currentHor = 0;
+let borderTop = 700;
+let borderLeft = 1000;
 let score = 0;
 
 function random(min, max) {
@@ -18,21 +17,20 @@ function random(min, max) {
 const spawnFood = () => {
   let points = [];
 
-  for (let x = 0; x < border; x += 25) {
-    for (let y = 0; y < border; y += 25) {
+  for (let x = 0; x < borderLeft; x += 25) {
+    for (let y = 0; y < borderTop; y += 25) {
       let point = {
         x: x,
         y: y,
       };
-      let hero = document.getElementById("hero");
-      if (hero.style.top + 0 !== point.y && hero.style.left + 0 !== point.x) {
+
+      if (currentTop !== point.y && currentLeft !== point.x) {
         points.push(point);
       }
     }
   }
 
   let rand = random(0, points.length);
-
   let food = points[rand];
   let map = document.getElementById("map");
   map.innerHTML += "<div id=food class=food></div>";
@@ -49,53 +47,46 @@ const eatFood = () => {
   scoreText.innerText = `Your score: ${score}`;
 };
 
-spawnFood();
-
-const move = (event) => {
+function move(event) {
+  let currentTop = parseInt(hero.style.top);
+  let currentLeft = parseInt(hero.style.left);
   let hero = document.getElementById("hero");
-  console.log("move");
+
   switch (event.key) {
     case inputs.down: {
-      console.log("down");
-
-      currentVer += 25;
-
+      if (currentTop + 25 < borderTop) currentTop += 25;
       break;
     }
 
     case inputs.up: {
-      console.log("up");
-      currentVer -= 25;
-      break;
-    }
-    case inputs.right: {
-      console.log("right");
-      currentHor += 25;
+      if (currentTop > 0) currentTop -= 25;
       break;
     }
 
     case inputs.left: {
-      console.log("left");
-      currentHor -= 25;
+      if (currentLeft > 0) currentLeft -= 25;
+      break;
+    }
+
+    case inputs.right: {
+      if (currentLeft + 26 < borderLeft) currentLeft += 25;
       break;
     }
   }
 
-  hero.style.top = currentVer + "px";
-  hero.style.left = currentHor + "px";
-
+  console.log(currentTop, currentLeft);
+  hero.style.top = `${currentTop}px`;
+  hero.style.left = `${currentLeft}px`;
   let food = document.getElementById("food");
+
   if (
-    food.style.left === hero.style.left &&
-    food.style.top === hero.style.top
+    food.style.top === hero.style.top &&
+    food.style.left === hero.style.left
   ) {
     eatFood();
     spawnFood();
   }
-};
+}
 
-const startGame = () => {
-  console.log("start game");
-  document.addEventListener("keydown", move);
-  document.getElementById("start").remove();
-};
+document.addEventListener("keydown", move);
+spawnFood();
